@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <div>
+      <ion-icon slot="secondary" name="logo-youtube" size="large" color="danger"></ion-icon>
+      <ion-title slot="primary">Youtube</ion-title>
+    </div>
+  </ion-toolbar>
+  <div>
+    <ion-searchbar (ionChange)="buscar($event)"animated></ion-searchbar>      <!-- Busca por titulo los videos-->
+  </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-row>
+      <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+        <ion-card *ngFor="let video of videos | filtro: textoBuscar; let i = index ">  <!-- recorre el arreglo con los datos-->
+          <div>
+            <!-- Los iframe recorren el ngFor colocando distintos videos a las distintas cards-->
+           <iframe *ngIf="i==0" width="560" height="315" src="https://www.youtube.com/embed/RRdsk068-MQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==1" width="560" height="315" src="https://www.youtube.com/embed/cHHLHGNpCSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==2" width="560" height="315" src="https://www.youtube.com/embed/1BYHdXjjufU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==3" width="560" height="315" src="https://www.youtube.com/embed/5zjDLZy0Q_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==4" width="560" height="315" src="https://www.youtube.com/embed/yI0AHdUNh44" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==5" width="560" height="315" src="https://www.youtube.com/embed/avIiGbLc3_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==6" width="560" height="315" src="https://www.youtube.com/embed/MXxX6Ee95gQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="i==7" width="560" height="315" src="https://www.youtube.com/embed/f3SEhqFA_TE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <ion-card-title>{{video.titulo}}</ion-card-title> <!-- titulo de cada video-->
+            <!-- Reproducciones -->
+            <ion-button color="dark">
+              <ion-icon name="eye-outline" size="large"></ion-icon>
+              <ion-badge color="dark">{{video.vistas}}</ion-badge>  <!-- vistas de cada video-->
+            </ion-button> 
+          </div>
+          <div>
+             <!-- Me gusta-->
+            <ion-button (click)="Like(i)" color="dark">
+              <ion-icon *ngIf="!video.like_bool" name="heart-outline" size="large"></ion-icon>                <!-- Muestra boton me gusta desmarcado-->
+              <ion-icon *ngIf="video.like_bool" name="heart" size="large" color="danger"></ion-icon>          <!-- Muestra boton me gusta marcado-->
+              <ion-badge color="success">{{video.likes}}</ion-badge>                                       <!-- Cantidad de me gusta-->
+            </ion-button>
+            <!-- No me gusta-->
+            <ion-button  (click)="Dislike(i)" color="dark">
+              <ion-icon *ngIf="!video.dislike_bool" name="heart-dislike-outline" size="large"></ion-icon>     <!-- Muestra boton no me gusta desmarcado-->
+              <ion-icon *ngIf="video.dislike_bool" name="heart-dislike" size="large"></ion-icon>              <!-- Muestra boton no me gusta marcado-->
+              <ion-badge color="danger">{{video.dislikes}}</ion-badge>                                     <!-- Cantidad de no me gusta-->
+            </ion-button>
+             <!-- Comentar-->
+            <ion-button color="dark">
+              <ion-icon name="chatbubble-outline" size="large"></ion-icon>  <!-- icono de comentario--> 
+              <ion-badge color="danger">{{video.comentarios}}</ion-badge>    <!-- Cantidad de comentarios-->         
+            </ion-button> 
+              <ion-item>
+                <ion-textarea [(ngModel)]="texto" placeholder="Escribir un comentario"></ion-textarea> <!-- Escribe lo que va a comentar --> 
+                <ion-icon (click)="enviar(i)" slot="end" name="send-outline"></ion-icon>  <!-- Icono para enviar dato --> 
+              </ion-item>
+             
+          </div>
+
+          <ion-list>
+            <ion-item color="light">{{video.texto}}</ion-item>  <!-- Muestra comentario--> 
+          </ion-list>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+</ion-content>
