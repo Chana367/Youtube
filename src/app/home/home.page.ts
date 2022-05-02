@@ -13,7 +13,6 @@ export class HomePage {
   videos: any = []; //Arreglo de los videos
   texto;          // guarda comentario del text area
   textoBuscar=''; // guarda la palabra a buscar
-
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {
     this.getVideos().subscribe(res=>{console.log("RES  ",res) //me suscribo a los datos del servidor/.json
@@ -30,6 +29,11 @@ export class HomePage {
         return res.data;
       })
       )
+  }
+  
+  id(x){
+    this.videos[x].id= x
+    return this.videos[x].id
   }
 
  // funcion para dar like y sumar el like o restarlo

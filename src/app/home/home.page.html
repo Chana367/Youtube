@@ -15,16 +15,16 @@
     <ion-row>
       <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
         <ion-card *ngFor="let video of videos | filtro: textoBuscar; let i = index ">  <!-- recorre el arreglo con los datos-->
-          <div>
+          <div (ionChange)="id(i)">
             <!-- Los iframe recorren el ngFor colocando distintos videos a las distintas cards-->
-           <iframe *ngIf="i==0" width="560" height="315" src="https://www.youtube.com/embed/RRdsk068-MQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==1" width="560" height="315" src="https://www.youtube.com/embed/cHHLHGNpCSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==2" width="560" height="315" src="https://www.youtube.com/embed/1BYHdXjjufU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==3" width="560" height="315" src="https://www.youtube.com/embed/5zjDLZy0Q_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==4" width="560" height="315" src="https://www.youtube.com/embed/yI0AHdUNh44" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==5" width="560" height="315" src="https://www.youtube.com/embed/avIiGbLc3_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==6" width="560" height="315" src="https://www.youtube.com/embed/MXxX6Ee95gQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           <iframe *ngIf="i==7" width="560" height="315" src="https://www.youtube.com/embed/f3SEhqFA_TE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==0" width="560" height="315" src="https://www.youtube.com/embed/RRdsk068-MQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==1" width="560" height="315" src="https://www.youtube.com/embed/cHHLHGNpCSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==2" width="560" height="315" src="https://www.youtube.com/embed/1BYHdXjjufU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==3" width="560" height="315" src="https://www.youtube.com/embed/5zjDLZy0Q_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==4" width="560" height="315" src="https://www.youtube.com/embed/yI0AHdUNh44" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==5" width="560" height="315" src="https://www.youtube.com/embed/avIiGbLc3_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==6" width="560" height="315" src="https://www.youtube.com/embed/MXxX6Ee95gQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe *ngIf="video.id==7" width="560" height="315" src="https://www.youtube.com/embed/f3SEhqFA_TE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <ion-card-title>{{video.titulo}}</ion-card-title> <!-- titulo de cada video-->
             <!-- Reproducciones -->
             <ion-button color="dark">
