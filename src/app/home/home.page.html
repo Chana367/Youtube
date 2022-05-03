@@ -1,12 +1,12 @@
-<ion-header mode="ios">
-  <ion-toolbar>
+<ion-header mode="ios" >
+  <ion-toolbar color="dark">
     <div>
       <ion-icon slot="secondary" name="logo-youtube" size="large" color="danger"></ion-icon>
       <ion-title slot="primary">Youtube</ion-title>
     </div>
   </ion-toolbar>
   <div>
-    <ion-searchbar (ionChange)="buscar($event)"animated></ion-searchbar>      <!-- Busca por titulo los videos-->
+    <ion-searchbar (ionChange)="buscar($event)"animated color="dark"></ion-searchbar>      <!-- Busca por titulo los videos-->
   </div>
 </ion-header>
 
@@ -14,7 +14,7 @@
 
     <ion-row>
       <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
-        <ion-card *ngFor="let video of videos | filtro: textoBuscar; let i = index ">  <!-- recorre el arreglo con los datos-->
+        <ion-card *ngFor="let video of videos | filtro: textoBuscar; let i = index " >  <!-- recorre el arreglo con los datos-->
           <div (ionChange)="id(i)">
             <!-- Los iframe recorren el ngFor colocando distintos videos a las distintas cards-->
            <iframe *ngIf="video.id==0" width="560" height="315" src="https://www.youtube.com/embed/RRdsk068-MQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -50,15 +50,15 @@
               <ion-icon name="chatbubble-outline" size="large"></ion-icon>  <!-- icono de comentario--> 
               <ion-badge color="danger">{{video.comentarios}}</ion-badge>    <!-- Cantidad de comentarios-->         
             </ion-button> 
-              <ion-item>
-                <ion-textarea [(ngModel)]="texto" placeholder="Escribir un comentario"></ion-textarea> <!-- Escribe lo que va a comentar --> 
-                <ion-icon (click)="enviar(i)" slot="end" name="send-outline"></ion-icon>  <!-- Icono para enviar dato --> 
-              </ion-item>
+              <ion-item color="Light">
+                <ion-textarea [(ngModel)]="texto" placeholder="Escribir un comentario" ></ion-textarea> <!-- Escribe lo que va a comentar --> 
+                  <ion-icon (click)="enviar(i)" size="large" slot="end" color="dark" name="send-outline"></ion-icon>  <!-- Icono para enviar dato -->
+            </ion-item>
              
           </div>
 
           <ion-list>
-            <ion-item color="light">{{video.texto}}</ion-item>  <!-- Muestra comentario--> 
+            <ion-item>{{video.texto}}</ion-item>  <!-- Muestra comentario--> 
           </ion-list>
         </ion-card>
 
